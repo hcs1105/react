@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+	<head>
+		<script src="./plugins/react.development.js"></script>
+		<script src="./plugins/react-dom.development.js"></script>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script>
+			const e = React.createElement; // make elements.
+
+			class LikeButton extends React.Component{
+				constructor(props){
+					super(props);
+				}
+				render(){
+                    // return e('button', {onClick:()=> this.setState({liked:true})}, 'Like');
+                    return e('button', null, 'Like'); //<button>Like</button>
+				}	 
+			}
+        </script>
+        <script>
+            // ReactDOM.render(e(LikeButton), document.getElementById('root'));
+            ReactDOM.render(e(LikeButton), document.querySelector('#root'));
+        </script>
+	</body>
+</html>
