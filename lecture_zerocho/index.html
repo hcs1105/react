@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 	<head>
-		<script src="./plugins/react.development.js"></script>
-		<script src="./plugins/react-dom.development.js"></script>
+        <meta charset='utf-8' />
+		<script src='./plugins/react.development.js'></script>
+        <script src='./plugins/react-dom.development.js'></script>      
+		<script src='./plugins/babel.min.js'></script>
 	</head>
 	<body>
-		<div id="root"></div>
-		<script>
-			const e = React.createElement; // make elements.
-
+		<div id='root'></div>
+		<script type='text/babel'>
 			class LikeButton extends React.Component{
 				constructor(props){
 					super(props);
+                    this.state = {
+                        liked : false
+                    };
 				}
 				render(){
-                    // return e('button', {onClick:()=> this.setState({liked:true})}, 'Like');
-                    return e('button', null, 'Like'); //<button>Like</button>
+                    return <button type='submit' onClick = {()=> {this.setState({liked : true})}}>{this.state.liked === true ? 'Liked' : 'Like'}</button>;
+                    // JSX = Javascript + XML 
 				}	 
 			}
         </script>
-        <script>
-            // ReactDOM.render(e(LikeButton), document.getElementById('root'));
-            ReactDOM.render(e(LikeButton), document.querySelector('#root'));
+        <script type='text/babel'>
+            ReactDOM.render(
+                <div><LikeButton /><LikeButton /><LikeButton /><LikeButton /></div>, 
+                document.querySelector('#root')
+            );
         </script>
 	</body>
 </html>
