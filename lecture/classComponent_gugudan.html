@@ -32,11 +32,21 @@
                 onSubmit = (e) => {
                     e.preventDefault();
                     if(parseInt(this.state.value) === this.state.firstNum * this.state.secondNum){
+                        /*
                         this.setState({
                             result : '정답 : ' + parseInt(this.state.value),
                             firstNum : Math.ceil(Math.random() * 9),
                             secondNum : Math.ceil(Math.random() * 9),
                             value : '',
+                        });
+                        */
+                        this.setState((prevState) => { // The setState property has asynchronous characteristics.
+                            return {
+                                result : '정답 : ' + parseInt(prevState.value),
+                                firstNum : Math.ceil(Math.random() * 9),
+                                secondNum : Math.ceil(Math.random() * 9),
+                                value : '',
+                            };                             
                         });
                     } else {
                         this.setState({
@@ -53,7 +63,7 @@
                 };
 
                 render() {
-                    return ( // () is group oprator.
+                    return ( // () is group operator.
                         <React.Fragment>
                             <p>{this.state.firstNum} 곱하기 {this.state.secondNum}는?</p>
                             <form onSubmit={this.onSubmit}>
