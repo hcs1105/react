@@ -4,18 +4,26 @@
  		<script src="./plugins/react-dom.development.js"></script>
     </head>   
     <body>
-        <div id="root"></div> <!-- Result :<button>like</button> -->
+        <div id="root"></div>
         <script>
             const e = React.createElement; // make elements.
 
             class LikeButton extends React.Component{
                 constructor(props){
                     super(props);
+                    this.state = {
+                        liked : false,
+                    };
                 }
 
                 render(){
-                    // return e('button', {onClick:() => this.setState({liked : true})}, 'like');
-                    return e('button', null, 'Like'); //<button>like</button>
+                    return e(
+                        'button', 
+                        {type:'submit', onClick:() => {this.setState({liked: true})}}, 
+                        this.state.liked === true ? 'Liked' :'Like',
+                    );
+                    // return e('button', {type:'submit', onClick:() => {console.log('clicked')}}, 'Like');
+                    // <button type="submit" onclick="() => {console.log('clicked')}">Like</button>
                 }
             }
         </script>
